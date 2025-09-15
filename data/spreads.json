@@ -1,0 +1,381 @@
+[
+  {
+    "id": "three-card",
+    "name": "Three Card Draw",
+    "description": "Past, Present, Future - a simple but powerful spread for insight into your life's timeline",
+    "positions": [
+      {
+        "index": 0,
+        "name": "Past",
+        "roleHint": "past influences and experiences that shape your current situation"
+      },
+      {
+        "index": 1,
+        "name": "Present",
+        "roleHint": "current situation, challenges, and opportunities in your life right now"
+      },
+      {
+        "index": 2,
+        "name": "Future",
+        "roleHint": "potential outcomes and what the future may hold based on current path"
+      }
+    ],
+    "layoutHints": {
+      "rows": 1,
+      "cols": 3,
+      "type": "linear"
+    },
+    "isActive": true
+  },
+  {
+    "id": "celtic-cross",
+    "name": "Celtic Cross",
+    "description": "Traditional 10-card spread providing comprehensive insight into your situation",
+    "positions": [
+      {
+        "index": 0,
+        "name": "Present Situation",
+        "roleHint": "the heart of the matter, your current situation or the central issue"
+      },
+      {
+        "index": 1,
+        "name": "Challenge",
+        "roleHint": "what crosses you, the challenge or obstacle you face"
+      },
+      {
+        "index": 2,
+        "name": "Distant Past",
+        "roleHint": "distant past, foundation of the situation, what is behind you"
+      },
+      {
+        "index": 3,
+        "name": "Recent Past",
+        "roleHint": "recent past, what is just behind you and leading to current situation"
+      },
+      {
+        "index": 4,
+        "name": "Possible Outcome",
+        "roleHint": "possible outcome, what may come to pass if things continue as they are"
+      },
+      {
+        "index": 5,
+        "name": "Near Future",
+        "roleHint": "near future, what is directly ahead of you in the immediate future"
+      },
+      {
+        "index": 6,
+        "name": "Your Approach",
+        "roleHint": "your approach, how you see yourself in this situation"
+      },
+      {
+        "index": 7,
+        "name": "External Influences",
+        "roleHint": "external influences, how others see you or what affects you from outside"
+      },
+      {
+        "index": 8,
+        "name": "Hopes and Fears",
+        "roleHint": "hopes and fears, what you most hope for or fear in this situation"
+      },
+      {
+        "index": 9,
+        "name": "Final Outcome",
+        "roleHint": "final outcome, the ultimate result of all the factors at play"
+      }
+    ],
+    "layoutHints": {
+      "rows": 4,
+      "cols": 4,
+      "type": "celtic_cross"
+    },
+    "isActive": true
+  },
+  {
+    "id": "horseshoe",
+    "name": "Horseshoe Spread",
+    "description": "Seven card guidance spread for exploring a specific question or situation",
+    "positions": [
+      {
+        "index": 0,
+        "name": "Past Influences",
+        "roleHint": "past influences that are affecting your current situation"
+      },
+      {
+        "index": 1,
+        "name": "Present Situation",
+        "roleHint": "your current situation and where you stand right now"
+      },
+      {
+        "index": 2,
+        "name": "Hidden Influences",
+        "roleHint": "hidden influences and factors you may not be aware of"
+      },
+      {
+        "index": 3,
+        "name": "Obstacles",
+        "roleHint": "obstacles and challenges you need to overcome"
+      },
+      {
+        "index": 4,
+        "name": "External Influences",
+        "roleHint": "external influences and how others affect your situation"
+      },
+      {
+        "index": 5,
+        "name": "Advice",
+        "roleHint": "advice and the best course of action to take"
+      },
+      {
+        "index": 6,
+        "name": "Outcome",
+        "roleHint": "likely outcome if you follow the advice and guidance given"
+      }
+    ],
+    "layoutHints": {
+      "rows": 2,
+      "cols": 4,
+      "type": "horseshoe"
+    },
+    "isActive": true
+  },
+  {
+    "id": "relationship-cross",
+    "name": "Relationship Cross",
+    "description": "Five card spread focused on relationship dynamics and partnership insights",
+    "positions": [
+      {
+        "index": 0,
+        "name": "Your Position",
+        "roleHint": "your feelings, thoughts, and position in the relationship"
+      },
+      {
+        "index": 1,
+        "name": "Their Position",
+        "roleHint": "their feelings, thoughts, and position in the relationship"
+      },
+      {
+        "index": 2,
+        "name": "The Connection",
+        "roleHint": "the connection between you, what bonds or separates you"
+      },
+      {
+        "index": 3,
+        "name": "Challenges",
+        "roleHint": "challenges and obstacles in the relationship"
+      },
+      {
+        "index": 4,
+        "name": "Potential",
+        "roleHint": "the potential and future possibilities of the relationship"
+      }
+    ],
+    "layoutHints": {
+      "rows": 3,
+      "cols": 3,
+      "type": "cross"
+    },
+    "isActive": true
+  },
+  {
+    "id": "career-path",
+    "name": "Career Path",
+    "description": "Six card spread for exploring career decisions and professional development",
+    "positions": [
+      {
+        "index": 0,
+        "name": "Current Position",
+        "roleHint": "your current career situation and professional standing"
+      },
+      {
+        "index": 1,
+        "name": "Your Strengths",
+        "roleHint": "your professional strengths and talents to leverage"
+      },
+      {
+        "index": 2,
+        "name": "Challenges",
+        "roleHint": "professional challenges and obstacles to overcome"
+      },
+      {
+        "index": 3,
+        "name": "Opportunities",
+        "roleHint": "opportunities available to you in your career"
+      },
+      {
+        "index": 4,
+        "name": "Action to Take",
+        "roleHint": "specific action you should take to advance your career"
+      },
+      {
+        "index": 5,
+        "name": "Outcome",
+        "roleHint": "likely outcome of following this career path"
+      }
+    ],
+    "layoutHints": {
+      "rows": 3,
+      "cols": 2,
+      "type": "linear"
+    },
+    "isActive": true
+  },
+  {
+    "id": "decision-making",
+    "name": "Decision Making",
+    "description": "Seven card spread to help you make important life decisions",
+    "positions": [
+      {
+        "index": 0,
+        "name": "The Decision",
+        "roleHint": "the decision you need to make and its nature"
+      },
+      {
+        "index": 1,
+        "name": "Option A",
+        "roleHint": "the first option and its potential outcomes"
+      },
+      {
+        "index": 2,
+        "name": "Option B",
+        "roleHint": "the second option and its potential outcomes"
+      },
+      {
+        "index": 3,
+        "name": "What You Know",
+        "roleHint": "information and knowledge you already have about the situation"
+      },
+      {
+        "index": 4,
+        "name": "What You Don't Know",
+        "roleHint": "hidden factors and information you may be missing"
+      },
+      {
+        "index": 5,
+        "name": "Your Instinct",
+        "roleHint": "what your intuition and inner wisdom are telling you"
+      },
+      {
+        "index": 6,
+        "name": "Best Path Forward",
+        "roleHint": "the best path forward and recommended decision"
+      }
+    ],
+    "layoutHints": {
+      "rows": 3,
+      "cols": 3,
+      "type": "pyramid"
+    },
+    "isActive": true
+  },
+  {
+    "id": "spiritual-guidance",
+    "name": "Spiritual Guidance",
+    "description": "Five card spread for spiritual growth and inner wisdom",
+    "positions": [
+      {
+        "index": 0,
+        "name": "Your Spiritual State",
+        "roleHint": "your current spiritual condition and development"
+      },
+      {
+        "index": 1,
+        "name": "What Serves You",
+        "roleHint": "spiritual practices and beliefs that serve your highest good"
+      },
+      {
+        "index": 2,
+        "name": "What Limits You",
+        "roleHint": "spiritual blocks or limiting beliefs holding you back"
+      },
+      {
+        "index": 3,
+        "name": "Hidden Wisdom",
+        "roleHint": "hidden wisdom and insights available to you"
+      },
+      {
+        "index": 4,
+        "name": "Next Steps",
+        "roleHint": "next steps on your spiritual journey and path of growth"
+      }
+    ],
+    "layoutHints": {
+      "rows": 2,
+      "cols": 3,
+      "type": "star"
+    },
+    "isActive": true
+  },
+  {
+    "id": "year-ahead",
+    "name": "Year Ahead",
+    "description": "Twelve card spread representing each month of the coming year",
+    "positions": [
+      {
+        "index": 0,
+        "name": "January",
+        "roleHint": "themes and energies for the month of January"
+      },
+      {
+        "index": 1,
+        "name": "February",
+        "roleHint": "themes and energies for the month of February"
+      },
+      {
+        "index": 2,
+        "name": "March",
+        "roleHint": "themes and energies for the month of March"
+      },
+      {
+        "index": 3,
+        "name": "April",
+        "roleHint": "themes and energies for the month of April"
+      },
+      {
+        "index": 4,
+        "name": "May",
+        "roleHint": "themes and energies for the month of May"
+      },
+      {
+        "index": 5,
+        "name": "June",
+        "roleHint": "themes and energies for the month of June"
+      },
+      {
+        "index": 6,
+        "name": "July",
+        "roleHint": "themes and energies for the month of July"
+      },
+      {
+        "index": 7,
+        "name": "August",
+        "roleHint": "themes and energies for the month of August"
+      },
+      {
+        "index": 8,
+        "name": "September",
+        "roleHint": "themes and energies for the month of September"
+      },
+      {
+        "index": 9,
+        "name": "October",
+        "roleHint": "themes and energies for the month of October"
+      },
+      {
+        "index": 10,
+        "name": "November",
+        "roleHint": "themes and energies for the month of November"
+      },
+      {
+        "index": 11,
+        "name": "December",
+        "roleHint": "themes and energies for the month of December"
+      }
+    ],
+    "layoutHints": {
+      "rows": 3,
+      "cols": 4,
+      "type": "grid"
+    },
+    "isActive": true
+  }
+]
