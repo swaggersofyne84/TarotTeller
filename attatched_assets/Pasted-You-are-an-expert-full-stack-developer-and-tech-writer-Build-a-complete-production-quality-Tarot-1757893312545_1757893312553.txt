@@ -1,0 +1,92 @@
+You are an expert full-stack developer and tech writer. Build a complete, production-quality **Tarot-Decoder** web app (single repo) that can:
+
+• Accept any tarot layout (spread), upright/reversed states, and card images.  
+• Immediately return coherent, accurate, and structured interpretations for each card's meaning in that position and an overall combined reading.  
+• Offer a library of common spreads (3-card, Celtic Cross, Horseshoe, Past/Present/Future, etc.) and allow users to create & save custom spreads.  
+• Be built and deployed **only using free tiers** (no paid third-party APIs required). The app must be fully functional on the free plans of the chosen services.
+
+Constraints & hard requirements:
+1. Stack: **Next.js + TypeScript** front end (React components), Tailwind CSS for styles. Use Next API routes (serverless) for backend logic.  
+2. Database & File storage: **Supabase (free tier)** — use Postgres for structured data and Supabase Storage for card images. (No paid DBs.)  
+3. Hosting: **Vercel Hobby (free)** for the Next.js app. (Hobby must be used only for hobby/personal projects per provider rules — if you plan to monetize, include a migration note).  
+4. No paid LLM or paid text-generation APIs. Generate interpretations deterministically using card data + templates + combination heuristics. (Optionally include a disabled hook for LLM enrichment if a paid key is later added.)  
+5. Ship seed data: include script to seed the DB from an open-source tarot JSON dataset (Rider-Waite JSON). Provide instructions and example data for at least the 78-card deck. Cite the dataset used and include license info.
+
+Deliverables (complete in the repo):
+A. Next.js app with TypeScript, fully commented and ready to run.  
+B. `tarot.json` (or DB seed script) with 78 cards (id, name, arcana, suit, number, upright_short, upright_long, reversed_short, reversed_long, keywords[], image_path).  
+C. Spread library JSON (3-card, Celtic Cross, Horseshoe, 5-card relationships, 9-card, etc.) with position definitions and a short "position meaning" note for each slot.  
+D. Interpretation engine (serverless API route): accepts `{spreadId, cards: [{cardId, orientation, x,y,slotIndex?}], options}` and returns `{positions: [{slotName,cardId,orientation,interpretation_short,interpretation_long}], overallSummary, keywords, confidenceHints}`.  
+E. Frontend UI: Drag/drop card placement, toggle reversed, choose spread, shuffle/deal, save reading, shareable stable reading link, export to PDF (jsPDF or HTML->PDF). Accessible, keyboard friendly, mobile responsive.  
+F. Admin page (protect with a simple password stored in environment variable): edit card meanings, add spreads, re-run seed.  
+G. Tests: unit tests for the interpretation engine with 10+ example spread cases.  
+H. Clear README with exact step-by-step deploy instructions for GitHub + Vercel + Supabase (free).
+
+Implementation details & heuristics for the interpretation engine:
+1. **Data model** — cards table fields:
+   - id (string, e.g., `major-0`), name, arcana (Major/Minor), suit, number, keywords (text[]), upright_short, upright_long, reversed_short, reversed_long, image_url.
+
+2. **Spread model** — spreads stored as `{id, name, positions: [{index, name, roleHint}], layoutHints: {rows,cols}}`.
+
+3. **Interpretation algorithm (deterministic, rule/template based)**:
+   - `getBase(card, orientation)`: returns upright_long or reversed_long trimmed to 2–4 sentences.
+   - `getPositionHint(spread, index)`: small modifier sentence that frames the base meaning for the position (e.g., "as the Challenge, this shows..." from spread metadata).
+   - `adjacencyInfluence(cards, index)`: look at nearby cards (prev/next in spread order or spatial neighbors within radius) and produce short combinatory notes: (e.g., same suit repetetion → accentuate suit theme; Major Arcana count >1 → highlight theme).
+   - `weighting`: Major Arcana = +1.5 weighting on theme prominence; Minor court cards increased as personality/people signals; reversed reduces directness but increases internal/blocked flavor.
+   - `composePositionInterpretation = template([positionName, cardName, orientation, baseShort, posModifier, adjacencyNotes])`.
+   - `composeOverallSummary`: aggregate top 3 keywords (from card keywords + spread position hints), note dominant suit(s), count Major Arcana, and present 3 suggested actions/advice lines.
+   - Provide confidenceHints: trivial rules that explain why engine chose that phrasing (e.g., "2 Major Arcana detected — reading focuses on life-path themes").
+
+4. **Combination heuristics examples** (implement as small rule table):
+   - If `Sun` + `Empress` appear near each other → emphasize creativity/abundance outcome.  
+   - If a cluster of Swords appears → cognitive/mental theme.  
+   - If reversed Tower + reversed Death → internal resistance to transformation (weaker external events).  
+   Provide a table (10–20 pairs) as initial rules, rest fall back to base+position+adjacency.
+
+5. **Templates**: supply both short (200 char) and long (350–800 char) templates. Example short: `"[PositionName]: [CardName] ([orientation]) — [BaseShort]. In this position it suggests [PositionModifier]."` Example long: combine base_long + 1–2 adjacency sentences + concrete short advice.
+
+6. **Reversal handling**: rely on reversed_long for nuance; but also allow a "reversedMode" option (soft/strong) to adjust how much reversed flips meaning.
+
+7. **Extensibility**: admin UI must allow adding custom wording, editing combination rules, and toggling certain heuristics.
+
+Files & skeletal code to include in the repo:
+- `package.json`, `README.md`, `next.config.js`
+- `pages/index.tsx` (main UI), `pages/admin.tsx` (admin panel), `pages/api/interpret.ts`, `pages/api/seed.ts`
+- `lib/tarotEngine.ts` (interpretation logic with unit tests)
+- `data/tarot.json`, `data/spreads.json`
+- `scripts/seed.ts` (node script to push tarot.json to Supabase)
+- `components/Card.tsx`, `components/SpreadBoard.tsx`, `components/InterpretationView.tsx`
+
+Build & run commands to include:
+- `npm run dev` — local dev (Next.js)
+- `npm run seed` — seeds DB (reads data/tarot.json and posts to Supabase via service key)
+- `npm run test` — run unit tests
+
+Security & environment variables:
+- SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY (keep service role in Vercel secret; only use service role for seeding; never expose service role in client).
+- ADMIN_PASS (for quick admin auth)
+- NOTE: Use Supabase Row Level Security for production if enabling multi-user features.
+
+Seed data instruction (in the repo): include clear script that can seed from one of the open datasets (e.g., `metabismuth/tarot-json` or Kaggle tarot JSON). Ensure license attribution in README.
+
+Testing checklist: write 10 unit tests for common spreads (including reversed combinations), verify exported PDF matches screen output, and test sharing URLs.
+
+Accessibility: all card images include `alt` text. Provide keyboard mechanisms to select & place cards.
+
+Final deliverable expectations for the AI:
+- Provide a **GitHub repo structure** with all files (skeletons + key code in each file).  
+- Provide **complete code** for interpretation engine, API routes, and main components (drag/drop UI).  
+- Provide **shell commands** to create the Supabase project/tables and to deploy to Vercel (in order).  
+- Provide **seed data** as `data/tarot.json` and `data/spreads.json` and a `scripts/seed.ts`.  
+- Provide a **README** with step-by-step local dev instructions and exact Vercel + Supabase setup steps (including env var names and where to paste keys).
+
+If any third-party dataset is used, include the exact repo/link and license in README and include a small parser to convert that dataset to our table schema.
+
+Important: Because we must only use free tiers, include a short "cost control" section in the README that tells users how to detect/avoid going past free quotas on Vercel and Supabase.
+
+Finish by generating:
+1. A complete scaffolded repo (all code files in place).  
+2. A `README.md` that contains the exact deployment instructions and links to the Vercel & Supabase docs.  
+3. A seeded demo reading page that can be used to validate everything works on the free tier.
+
+That's the full spec. Build and return the repo content, with working code, SQL, seed data, tests, and README.
